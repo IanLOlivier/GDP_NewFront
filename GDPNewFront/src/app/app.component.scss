@@ -1,0 +1,54 @@
+table {
+    padding: 10px;
+    width: 100%;
+  
+    tr:nth-child(odd) {
+      background-color: #f0f8fcb8;
+    }
+  
+    .mat-header-cell{
+      font-weight:bold;
+      color:#000;
+    }
+  
+    .mat-column-id,
+    .mat-column-actions {
+      width: 70px;
+    }
+  
+    .mat-column-actions {
+      text-align: right;
+    }
+  
+    .mat-icon {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+  
+    .mat-row:hover {
+      box-shadow: inset 0 0 8px 0 rgba(0, 0, 0, 0.1), 0 1px 1px 0 rgba(0, 0, 0, 0.14),
+        0 1px 3px 0 rgba(0, 0, 0, 0.12);
+    }
+  
+      //TODO: might be better to make this %'s
+    .candidateNotes {
+      min-width: 200px;
+    }
+  
+    .mat-column-name{
+      max-width:150px;
+    }
+  
+    .mat-column-project{
+      max-width:120px;
+      padding-right:10px;
+    }
+  
+    .mat-column-recommendation{
+      max-width:120px;
+    }
+  
+  }
+mat-form-field {
+    width: 100%;
+  }

@@ -9,10 +9,14 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from "@angular/material/table";
+import { HttpClientModule } from '@angular/common/http';
+import { MoreInfoComponent } from './more-info/more-info.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MoreInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -20,10 +24,13 @@ import { MatTableModule } from "@angular/material/table";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     MatSelectModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]
