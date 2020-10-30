@@ -8,13 +8,14 @@ import { TeamResponseDTO } from './TeamResponse';
   providedIn: 'root'
 })
 export class EmployeeSkillsHttpService {
-  private endpoint = 'http://localhost:7000/get-employee-with-skills';
+  private endpoint = 'http://localhost:8080/get-employee-with-skills';
 
 
   constructor(private http: HttpClient) {}
 
   getSkills(projectDescriptionDTO: ProjectDescriptionDTO): Observable<TeamResponseDTO> {
 
+    console.log(process.env.SERVER);
     return this.http.post<any>(this.endpoint, projectDescriptionDTO);
   }
 }
