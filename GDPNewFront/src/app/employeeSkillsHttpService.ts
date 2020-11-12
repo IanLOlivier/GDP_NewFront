@@ -8,7 +8,7 @@ import { TeamResponseDTO } from './TeamResponse';
   providedIn: 'root'
 })
 export class EmployeeSkillsHttpService {
-  private endpoint = 'http://localhost:7000/get-employee-with-skills';
+  private endpoint = 'http://34.245.94.82:7000/get-employee-with-skills';
 
 
   constructor(private http: HttpClient) {}
