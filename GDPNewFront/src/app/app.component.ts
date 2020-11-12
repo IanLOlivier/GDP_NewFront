@@ -1,4 +1,4 @@
-import { SkillOutput } from './SkillOutputDTO';
+import { SkillOutputDTO } from './SkillOutputDTO';
 import { EmployeeSkillsHttpService } from './employeeSkillsHttpService';
 import { ProjectDescriptionDTO } from './projectDescriptionDTO';
 import { Component, OnInit } from '@angular/core';
@@ -8,6 +8,8 @@ import { TeamResponseDTO } from './TeamResponse';
 import { EmployeeWithSkillsDTO } from './EmployeeWithSkillsDTO';
 import { MatDialog } from '@angular/material/dialog';
 import { MoreInfoComponent } from './more-info/more-info.component';
+import { Employee } from './Employee';
+import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.component';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,6 @@ import { MoreInfoComponent } from './more-info/more-info.component';
 })
 export class AppComponent implements OnInit {
 
- 
   public displayedColumns: string[] = ['name', 'skills'];
   public addProjectDescription: FormGroup;
   dataSource = ELEMENT_DATA;
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
   public teamSize: FormControl;
   public description: FormControl;
   public loading = true;
-  public skillInfo: Array<SkillOutput> = Array<SkillOutput>();
+  public spinnerShow = false;
+  public skillInfo: Array<SkillOutputDTO> = Array<SkillOutputDTO>();
 
   constructor(private formBuilder: FormBuilder,
               private moreInfoDialog: MatDialog,
@@ -46,6 +48,7 @@ export class AppComponent implements OnInit {
 
   public onClick(): void {
     this.loading = true;
+    this.spinnerShow = true;
     const projectCode: string = this.projectCode.value;
     const teamSize: number = this.teamSize.value;
     const description: string = this.description.value;
@@ -56,13 +59,12 @@ export class AppComponent implements OnInit {
       description: description.trim().toLowerCase()
     };
 
-    console.log(projectDescriptionDTO);
-
     this.employeeSkillsHttpService.getSkills(projectDescriptionDTO).subscribe((data: TeamResponseDTO) => {
-        console.log(data);
         this.dataSource = data.employeeSkills;
-        this.skillInfo = data.skillOutput;
+        this.skillInfo = data.skillOutputDTO;
         this.loading = false;
+        this.spinnerShow = false;
+
     });
 
   }
@@ -78,9 +80,18 @@ export class AppComponent implements OnInit {
 
   }
 
+
+public openUserInfoDialog(employee: Employee): void {
+
+  const dialogRef = this.moreInfoDialog.open(UserInfoDialogComponent, {
+    restoreFocus: false,
+    width: '500px',
+    height: '500px',
+    data: employee
+});
 }
 
-
+}
 
 
 const ELEMENT_DATA: EmployeeWithSkillsDTO[] = [
@@ -92,5 +103,4 @@ const ELEMENT_DATA: EmployeeWithSkillsDTO[] = [
   // {name: 'Ian', skills: ['AWS, AZURE, SQL']},
   // {name: 'Martin', skills: ['AWS, AZURE, JAVA']},
   // {name: 'Ian', skills: ['AWS, AZURE, SQL']}
-  
 ];

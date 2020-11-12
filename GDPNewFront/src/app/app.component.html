@@ -47,9 +47,13 @@
           class="mat-raised-button"
           color="accent"
           style="margin-right:20px; width: 100px;"
-          [disabled]="!addProjectDescription.valid"
+          [disabled]="!addProjectDescription.valid || spinnerShow"
         >  
-        <span> Send </span>
+
+        
+        <span> <mat-spinner [ngStyle]="{'visibility': spinnerShow ? 'visible' : 'hidden'}" diameter="22"></mat-spinner> 
+          Send </span>
+
         </button>
       </div>
     </form>
@@ -64,8 +68,7 @@
 <!-- User name Column -->
 <ng-container matColumnDef="name">
   <th mat-header-cell *matHeaderCellDef mat-sort-header> Username </th>
-  
-  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  <td mat-cell *matCellDef="let element" (click)="openUserInfoDialog(element.employee)"> {{element.employee.name}} </td>
 </ng-container>
 
 <!-- Skills Column -->

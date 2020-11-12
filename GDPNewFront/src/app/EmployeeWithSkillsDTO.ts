@@ -1,4 +1,6 @@
+import { Employee } from './Employee';
+
 export class EmployeeWithSkillsDTO {
-    name: string;
+    employee: Employee;
     skills: Array<string>;
 }

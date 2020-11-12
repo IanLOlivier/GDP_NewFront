@@ -6,17 +6,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from "@angular/material/table";
 import { HttpClientModule } from '@angular/common/http';
 import { MoreInfoComponent } from './more-info/more-info.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { UserInfoDialogComponent } from './user-info-dialog/user-info-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MoreInfoComponent
+    MoreInfoComponent,
+    UserInfoDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +33,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatTableModule,
     HttpClientModule,
+    MatProgressSpinnerModule
 
   ],
   providers: [],
